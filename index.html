@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="app/app-style.css">
+</head>
+
+<body id="thebody" ng-app="MyApp" layout="column" ng-Controller="mainCont">
+    
+    <div id="devSlide1" style="display: block; right: -230px;background: rgb(226, 13, 13);" class="">  
+        <div class="handle" onclick="HideShowHandle()">  
+            <img src="/s.gif" alt="Collapse Force.com Quick Access Menu" class="menuArrow1" onblur="this.className = 'menuArrow1';" onfocus="this.className = 'menuArrowOn1';" onmouseout="this.className = 'menuArrow1';" onmouseover="this.className = 'menuArrowOn1';" title="Collapse Force.com Quick Access Menu"/>  
+        </div>  
+        <div class="slideContainer">  
+            <div class="slideBody">  
+            </div>  
+
+       </div>  
+    </div>  
+    
+     <script> 
+        function HideShowHandle(){  
+           var d = document.getElementById('devSlide1');  
+           if(d.className =='')  
+           {  
+               d.style.right='-2px';  
+               d.className ='expanded';  
+           }  
+           else if(d.className =='expanded'){  
+               d.style.right='-230px';  
+               d.className ='';  
+           }
+
+        }  
+    </script> 
+
+<div ng-controller="SideNavCtrl" layout="column" style="height:500px;" ng-cloak>
+
+  <section layout="row" flex>
+
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content layout-padding ng-controller="LeftCtrl">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+          Close Sidenav Left
+        </md-button>
+        <p hide show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>
+
+    </md-sidenav>
+
+    <md-content flex layout-padding>
+
+      <div layout="column" layout-align="top center">
+        <p>
+        The left sidenav will 'lock open' on a medium (>=960px wide) device.
+        </p>
+        <p>
+        The right sidenav will focus on a specific child element.
+        </p>
+
+        <div>
+          <md-button ng-click="toggleLeft()"
+            class="md-primary" hide-gt-md>
+            Toggle left
+          </md-button>
+        </div>
+
+        <div>
+          <md-button ng-click="toggleRight()"
+            ng-hide="isOpenRight()"
+            class="md-primary">
+            Toggle right
+          </md-button>
+        </div>
+      </div>
+
+      <div flex></div>
+
+    </md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="RightCtrl" layout-padding>
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input type="text" id="testInput"
+                   ng-model="data" md-autofocus>
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+
+    </md-sidenav>
+
+  </section>
+
+</div>
+
+
+
+    <div ng-controller="AppCtrl" layout="column" style="height:600px" ng-cloak>
+
+      <md-toolbar md-scroll-shrink ng-if="true" ng-controller="TitleController">
+        <div class="md-toolbar-tools">
+          <h3>
+            <span>{{title}}</span>
+          </h3>
+        </div>
+      </md-toolbar>
+
+      <md-content flex>
+
+        <md-list>
+
+          <md-list-item class="md-3-line" ng-repeat="item in todos">
+            <img ng-src="{{item.face}}" alt="{{item.who}}" class="md-avatar">
+
+            <div class="md-list-item-text">
+              <h3>{{item.what}}</h3>
+              <h4>{{item.who}}</h4>
+
+              <p>
+                {{item.notes}}
+              </p>
+            </div>
+            <md-divider inset></md-divider>
+          </md-list-item>
+
+        </md-list>
+
+      </md-content>
+
+    </div>
+
+
+    
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="app/app-angular.js"></script>
+
+</body>
+
+</html>
