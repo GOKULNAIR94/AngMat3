@@ -36,7 +36,7 @@
         }  
     </script> 
 
-<div ng-controller="SideNavCtrl" layout="column" style="height:500px;" ng-cloak>
+<div ng-controller="SideNavCtrl" layout="column" ng-cloak>
 
   <section layout="row" flex>
 
@@ -69,18 +69,18 @@
           <div style="padding: 8px 0px;">
               <md-button style="padding: 0px;margin: 0px;" ng-click="toggleLeft()"
             class="md-primary" hide-gt-md>
-                <md-icon style="width: 43px;height: 43px;" md-svg-icon="src/svg/menu.svg"></md-icon> 
+                <md-icon style="width: 40px;height: 43px;" md-svg-icon="src/svg/menu.svg"></md-icon> 
           </md-button>
         </div>
+        
+          <img style="height: 64px; position:fixed; right:52%;" src="src/images/LTI.jpg">
           
         <div class="md-toolbar-tools">
-          <h3>
-            <span>{{title}}</span>
-          </h3>
+            
         </div>
       </md-toolbar>
 
-      <md-content flex>
+      <md-content style="overflow:hidden" flex>
 
         <md-list>
 
@@ -135,8 +135,8 @@
       
       <div style="top: 160px;
     position: fixed;
-    right: 0px;">
-          <md-button ng-click="toggleRight()"
+    right: 15px;">
+          <md-button style="margin: 0px;padding: 0px; min-height: 25px;min-width: 36px;font-weight: 900;font-size: 23px;" ng-click="toggleRight()"
             ng-hide="isOpenRight()"
             class="md-primary">
             &lt;
